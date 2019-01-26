@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="stack-sherry-t400",
+    name="pystack-sherryt400",
     version="0.0.1",
     author="Sheharyar Naseem",
     author_email="sherryfbi1994@gmal.com",
