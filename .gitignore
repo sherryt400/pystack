@@ -2,3 +2,6 @@ playground.py
 .venv
 **__pycache__**
 .idea
+dist
+build
+stack_sherry_t400.egg-info
