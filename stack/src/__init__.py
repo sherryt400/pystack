@@ -1,5 +1,7 @@
 from threading import Condition
 
+from stack.src.exception.stack_exception import StackException
+
 
 class Stack:
 
@@ -9,9 +11,19 @@ class Stack:
         self.__condition = Condition()
         pass
 
-    def push(self, item):
+    def push(self, item, block=True):
+        """
+        :param item:
+        :param block:
+        :return:
+        """
+
+        # check if blocking is not necessary
+        if not block and len(self.__list) == self.__size:
+            raise StackException('size limit reached')
+
         self.__condition.acquire()
-        while self.__size is not None and len(self.__list) == self.__size:
+        while block and self.__size is not None and len(self.__list) == self.__size:
             self.__condition.wait()
             pass
         self.__list.append(item)
@@ -19,9 +31,18 @@ class Stack:
         self.__condition.release()
         pass
 
-    def pop(self):
+    def pop(self, block=True):
+        """
+        :param block:
+        :return:
+        """
+
+        # check if blocking is not necessary
+        if not block and len(self.__list) == 0:
+            raise StackException('pop on empty stack')
+
         self.__condition.acquire()
-        while len(self.__list) == 0:
+        while block and len(self.__list) == 0:
             self.__condition.wait()
             pass
         item = self.__list.pop()
