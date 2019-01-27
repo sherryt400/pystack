@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="pystack-sherryt400",
-    version="0.0.1",
+    version="0.0.2",
     author="Sheharyar Naseem",
     author_email="sherryfbi1994@gmal.com",
     description="A synchronized stack data structure for python 3",

@@ -23,6 +23,21 @@ item = stack.pop()
 stack = Stack(10)
 ```
 
+
+**Prevent Blocking**
+
+```
+stack = Stack(2)
+stack.push('item1', block=False)
+stack.push('item2', block=False)
+# this will throw exception now
+stack.push('item3', block=False)
+
+# and
+
+item = stack.pop(block=False)
+```
+
 **Producer Consumer example**
 
 ```
